@@ -1,0 +1,18 @@
+{
+  "name": "express-service-template",
+  "version": "1.0.0",
+  "description": "Express microservice template",
+  "main": "src/app.js",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Giuseppe Albrizio",
+    "email": "g.albrizio@gmail.com"
+  },
+
+  "license": "MIT"
+}
