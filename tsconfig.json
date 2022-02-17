@@ -5,30 +5,27 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
+      "*": ["node_modules/*", "src/types/*"]
     },
 
     /* Interop Constraints */
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
     "allowSyntheticDefaultImports": true,
 
     /* Type Checking */
     "strict": true,
-    "noImplicitAny": true,/* Enable all strict type-checking options. */
+    "noImplicitAny": true /* Enable all strict type-checking options. */,
 
     /* Language and Environment */
     "target": "es6",
 
     /* Completeness */
-    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
 
     /* Emit */
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "dist"
 
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
