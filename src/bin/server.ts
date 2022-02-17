@@ -74,6 +74,8 @@ const onListening = () => {
       ? `pipe ${serverAddress}`
       : `port ${serverAddress?.port}`;
   debug(`Listening on ${bind}`);
+  // eslint-disable-next-line no-console
+  console.log(`🚀 Server listening on port ${bind}`);
 };
 
 /**
