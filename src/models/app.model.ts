@@ -4,7 +4,7 @@ import { model, Schema, Document } from 'mongoose';
 
 dotenv.config();
 
-interface App {
+export interface App {
   field1: string;
   field2: string;
 }

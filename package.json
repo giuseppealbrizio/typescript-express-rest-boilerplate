@@ -26,6 +26,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/pubsub": "^2.19.0",
     "@skeldon/sdv3-shared-library": "^1.1.11",
     "clean-deep": "^3.4.0",
     "compression": "^1.7.4",

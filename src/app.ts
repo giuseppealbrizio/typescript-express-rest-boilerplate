@@ -17,6 +17,8 @@ import { NotFoundError } from './errors';
 
 import mongoDbConfig from './config/mongodb.config';
 
+import v1Routes from './routes/v1/index.route';
+
 // global env variables definition
 dotenv.config();
 
@@ -129,6 +131,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // app.use((req, res) =>
 //   res.sendFile(path.resolve(path.join(__dirname, '../public/index.html'))),
 // );
+
+/**
+ * Routes definitions
+ */
+app.use('/api/v1/servicename', v1Routes);
 
 // API middleware that return 404 if route not found
 app.all('*', () => {
