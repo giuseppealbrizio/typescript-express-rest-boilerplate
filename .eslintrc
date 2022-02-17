@@ -23,6 +23,8 @@
   "rules": {
     // ** Prettier
     "prettier/prettier": "error",
+    "no-console": "off",
+    "consistent-return": "off",
     // ** ESLint
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
@@ -40,6 +42,7 @@
         "ignoreParameters": true
       }
     ],
+    "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     // ** Jest rules section
     "jest/no-disabled-tests": "warn",

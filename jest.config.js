@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+module.exports = {
   testMatch: ['**/tests/**/*.ts'],
   // Automatically clear mock calls, instances and results before every test
   clearMocks: true,

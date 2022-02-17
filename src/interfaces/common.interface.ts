@@ -5,3 +5,7 @@ export interface ErrnoException extends Error {
   syscall?: string;
   stack?: string;
 }
+
+export interface IFilterObject extends Object {
+  q: string;
+}
