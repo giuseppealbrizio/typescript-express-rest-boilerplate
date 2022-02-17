@@ -14,6 +14,6 @@ FROM base as release
 ENV NODE_ENV=production
 USER node
 COPY --chown=node:node --from=builder /usr/src/app/node_modules ./node_modules
-COPY --chown=node:node --from=builder /usr/src/app/dist ./dist
+COPY --chown=node:node --from=builder /usr/src/app/build ./build
 COPY --chown=node:node . /usr/src/app
-CMD ["node", "./dist/bin/server"]
+CMD ["node", "./build/bin/server"]

@@ -3,5 +3,4 @@ npm-debug.log
 Dockerfile
 .git
 .gitignore
-dist
 README.md

@@ -1,4 +1,5 @@
 {
+  "exclude": ["node_modules"],
   "compilerOptions": {
     /* Modules */
     "module": "commonjs",
@@ -25,7 +26,7 @@
 
     /* Emit */
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "./build"
 
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
