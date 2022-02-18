@@ -1,4 +1,3 @@
-import { publishMessage } from '@skeldon/sdv3-shared-library';
 import { PubSub } from '@google-cloud/pubsub';
 import debug from 'debug';
 import { ApplicationError } from '../../errors';
@@ -31,8 +30,10 @@ export const publishMessageToPubSub = async (
       .publishMessage(message);
 
     return { messageId };
-  } catch (error: any) {
+  } catch (error) {
     DEBUG(error);
-    throw new ApplicationError(500, error.message);
+    if (error instanceof ApplicationError) {
+      throw new ApplicationError(500, error.message);
+    }
   }
 };

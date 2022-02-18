@@ -4,12 +4,16 @@ import { model, Schema, Document } from 'mongoose';
 
 dotenv.config();
 
-export interface App {
+export interface IApp {
   field1: string;
   field2: string;
 }
 
-const AppSchema = new Schema<App>(
+interface AppBaseDocument extends IApp, Document {
+  fullField: string;
+}
+
+const AppSchema = new Schema<IApp>(
   {
     field1: {
       type: String,
@@ -38,13 +42,9 @@ const AppSchema = new Schema<App>(
   },
 );
 
-interface AppBaseDocument extends App, Document {
-  fullField: string;
-}
-
 // eslint-disable-next-line func-names
 AppSchema.virtual('fullField').get(function (this: AppBaseDocument) {
   return `${this.field1} - ${this.field2}`;
 });
 
-export default model<App>('App', AppSchema, 'apps');
+export default model<IApp>('App', AppSchema, 'apps');

@@ -1,5 +1,5 @@
 import cleanDeep from 'clean-deep';
-import { ApplicationError } from '../errors';
+// import { ApplicationError } from '../errors';
 // eslint-disable-next-line import/no-named-as-default
 import App from '../models/app.model';
 import { IFilterObject } from '../interfaces/common.interface';

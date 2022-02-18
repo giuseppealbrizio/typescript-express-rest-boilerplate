@@ -52,7 +52,7 @@ export const subscribeToPushEventExample = async (
  * @param res
  * @return {Promise<void>}
  */
-export const subscribeToPullEventExample = (req: Request, res: Response) => {
+export const subscribeToPullEventExample = (): void => {
   try {
     // Define some options for subscription
     const subscriberOptions = {
@@ -78,10 +78,10 @@ export const subscribeToPullEventExample = (req: Request, res: Response) => {
 
       // Parse message in a JSON Object
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const result = JSON.parse(data);
+      const response = JSON.parse(data);
 
       // Do something with the result
-      console.log(result);
+      console.log(response);
 
       // Increase message counter
       messageCount += 1;
@@ -111,9 +111,7 @@ export const subscribeToPullEventExample = (req: Request, res: Response) => {
       subscription.removeListener('error', errorHandler);
       console.log(`${messageCount} message(s) received.`);
     }, 60 * 1000);
-
-    // Send a 200 status code
-    res.status(200).send();
+    // TODO: Check if this function has to return anything
   } catch (error) {
     DEBUG(error);
     if (error instanceof ApplicationError) {

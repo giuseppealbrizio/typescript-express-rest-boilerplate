@@ -31,6 +31,7 @@
     "import/prefer-default-export": "off",
     "array-callback-return": "off",
     "no-restricted-globals": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
     // ** Typescript rules section
     "@typescript-eslint/prefer-default-export": "off",
     "@typescript-eslint/prefer-arrow-callback": "off",

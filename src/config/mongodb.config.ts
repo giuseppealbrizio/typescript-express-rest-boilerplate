@@ -8,19 +8,19 @@ mongoose.connection.on('connected', () => {
 });
 
 mongoose.connection.on('reconnected', () => {
-  console.log('MongoDB Connection Reestablished');
+  console.log('🌈 MongoDB Connection Reestablished');
 });
 
 mongoose.connection.on('disconnected', () => {
-  console.log('MongoDB Connection Disconnected');
+  console.log('💀 MongoDB Connection Disconnected');
 });
 
 mongoose.connection.on('close', () => {
-  console.log('MongoDB Connection Closed');
+  console.log('🚪 MongoDB Connection Closed');
 });
 
 mongoose.connection.on('error', (error: string) => {
-  console.log(`MongoDB ERROR: ${error}`);
+  console.log(`🤦🏻 MongoDB ERROR: ${error}`);
 
   process.exit(1);
 });
