@@ -1,5 +1,5 @@
 import express from 'express';
-import { requireAuth } from '@skeldon/sdv3-shared-library';
+import { requireAuth } from '../../middlewares/shared';
 import authController from '../../controllers/auth.controller';
 import passportGoogle from '../../services/passport/passport-google.service';
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import { requireAuth } from '@skeldon/sdv3-shared-library';
+import { requireAuth } from '../../middlewares/shared';
 import userController from '../../controllers/user.controller';
 import catchAsync from '../../middlewares/catchAsync.middleware';
 import { uploadSingleFileToMS } from '../../middlewares/upload.middleware';

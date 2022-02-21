@@ -1,6 +1,6 @@
 // Routes created for testing purposes.
 import express from 'express';
-import { requireAuth } from '@skeldon/sdv3-shared-library';
+import { requireAuth } from '../../middlewares/shared';
 import appController from '../../controllers/app.controller';
 import catchAsync from '../../middlewares/catchAsync.middleware';
 

@@ -10,7 +10,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import passport from 'passport';
 import xss from 'xss-clean';
-import { currentUser } from '@skeldon/sdv3-shared-library'; // custom authentication
+import { currentUser } from './middlewares/shared'; // replace shared library
 import { stream } from './utils/logger.utils';
 
 import mongoDbConfig from './config/mongodb.config';

@@ -27,6 +27,8 @@ declare global {
   }
 }
 
+// const secretOrPrivateKey = <string>process.env.JWT_KEY;
+
 export const currentUser = (
   req: Request,
   res: Response,
@@ -46,12 +48,15 @@ export const currentUser = (
 
       req.currentUser = jwt.verify(
         jwtToken,
+        // secretOrPrivateKey,
+        // @see https://stackoverflow.com/questions/42273853/in-typescript-what-is-the-exclamation-mark-bang-operator-when-dereferenci
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         process.env.JWT_KEY!,
       ) as UserPayload;
     } else if (req.cookies.jwt) {
       req.currentUser = jwt.verify(
         req.cookies.jwt,
+        // secretOrPrivateKey,
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         process.env.JWT_KEY!,
       ) as UserPayload;
