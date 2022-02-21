@@ -1,7 +1,7 @@
 {
   "name": "typescript-rest-boilerplate",
   "version": "1.0.0",
-  "description": "Typescript rest microservice template using node.js and express",
+  "description": "Typescript REST microservice boilerplate using node.js and express and some other cool stuff",
   "main": "src/app.ts",
   "engines": {
     "node": ">=12.0.0"
