@@ -134,7 +134,7 @@ UserSchema.pre<IUserDocument>('save', async function (next) {
 
 // methods
 UserSchema.methods.toJSON = function () {
-  const userObj = this.user.toObject();
+  const userObj = this.toObject();
   userObj.id = userObj._id; // remap _id to id
 
   delete userObj._id;

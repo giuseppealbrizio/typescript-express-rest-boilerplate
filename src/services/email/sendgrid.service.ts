@@ -63,4 +63,28 @@ export default {
       }
     }
   },
+  /**
+   * Send an email with password reset token
+   * @param email
+   * @param token
+   * @returns {Promise<[Response<object>, {}]>}
+   */
+  sendResetPasswordToken: async (email: string, token: string) => {
+    try {
+      MailService.setApiKey(<string>process.env.SENDGRID_API_KEY);
+
+      const msg = {
+        to: email,
+        from: process.env.SENDGRID_SENDER_EMAIL,
+        subject: 'Password change request',
+        text: `Hello ${email}, we heard you lost your password. You can recover with this token: ${token}`,
+      };
+      // @ts-ignore
+      return await MailService.send(msg);
+    } catch (error) {
+      if (error instanceof ResponseError) {
+        throw new ApplicationError(error.code, error.response.body);
+      }
+    }
+  },
 };

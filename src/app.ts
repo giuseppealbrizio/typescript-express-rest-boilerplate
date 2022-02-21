@@ -8,14 +8,15 @@ import mongoSanitize from 'express-mongo-sanitize';
 import session from 'express-session';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import passport from 'passport';
 import xss from 'xss-clean';
 import { currentUser } from '@skeldon/sdv3-shared-library'; // custom authentication
 import { stream } from './utils/logger.utils';
 
+import mongoDbConfig from './config/mongodb.config';
+
 import errorHandler from './middlewares/errorHandler.middleware';
 import { NotFoundError } from './errors';
-
-import mongoDbConfig from './config/mongodb.config';
 
 import v1Routes from './routes/v1/index.route';
 
@@ -65,8 +66,8 @@ app.use(cookieParser());
 
 // cookie policy for CORS
 const DEFAULT_ENV = process.env.NODE_ENV || 'development';
-const COOKIE_MAX_AGE = process.env.COOKIE_MAX_AGE || 1000 * 60 * 60 * 24 * 30;
-const SECRET = process.env.JWT_KEY;
+const COOKIE_MAX_AGE = process.env.COOKIE_MAX_AGE || 1000 * 60 * 60 * 24;
+const SECRET = process.env.JWT_KEY || 'your_jwt_secret';
 
 app.use(
   session({
@@ -76,21 +77,31 @@ app.use(
       httpOnly: true,
       sameSite: 'lax',
     },
-    secret: <string>SECRET,
+    secret: SECRET,
     resave: false,
     saveUninitialized: false,
     /* Store session in mongodb */
     store: MongoStore.create({
+      autoRemove: 'native', // Default
       mongoUrl:
         process.env.NODE_ENV === 'production'
           ? process.env.MONGO_URI
           : process.env.MONGO_URI_TEST,
     }),
+    unset: 'destroy',
   }),
 );
 
 // custom authentication middleware used to check if user is logged in
 app.use(currentUser);
+
+/**
+ * Initialize Passport and pass the session to session storage of express
+ * Strategies are called in the auth router
+ * and in ./src/services/passport
+ */
+app.use(passport.initialize());
+app.use(passport.session());
 
 // CORS policy configuration
 app.use(
@@ -123,6 +134,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // );
 
 // Routes definition
+app.use(`/api/v1/${process.env.SERVICE_NAME}`, v1Routes);
 
 /**
  * Catchall middleware. Activate to serve every route in
@@ -131,11 +143,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // app.use((req, res) =>
 //   res.sendFile(path.resolve(path.join(__dirname, '../public/index.html'))),
 // );
-
-/**
- * Routes definitions
- */
-app.use('/api/v1/servicename', v1Routes);
 
 // API middleware that return 404 if route not found
 app.all('*', () => {

@@ -13,6 +13,7 @@ const router = express.Router();
 /**
  * TEST ROUTES
  */
+
 router.get(
   '/test-route-protection',
   requireAuth,

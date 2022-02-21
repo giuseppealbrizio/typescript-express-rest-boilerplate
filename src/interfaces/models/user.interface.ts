@@ -3,8 +3,8 @@ export interface IUser {
   fullName: string;
   email: string;
   password: string;
-  resetPasswordToken: string;
-  resetPasswordExpires: Date;
+  resetPasswordToken?: string;
+  resetPasswordExpires?: Date;
   google: IGoogle;
   role: string;
   active: boolean;

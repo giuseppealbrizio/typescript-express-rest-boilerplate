@@ -1,7 +1,8 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import _ from 'lodash';
 
 import appRoutes from './app.route';
+import authRoutes from './auth.route';
 import userRoutes from './user.route';
 // import publisherRoutes from './events/publisher.route';
 // import subscriberRoutes from './events/subscriber.route';
@@ -9,10 +10,24 @@ import userRoutes from './user.route';
 
 const router = express.Router();
 
+// Healthy probe for Kubernetes.
+// @see
+// https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-a-liveness-http-request
+router.get('/', (req: Request, res: Response) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Healthy check completed successfully',
+  });
+});
+
 const defaultRoutes = [
   {
     path: '/app',
     route: appRoutes,
+  },
+  {
+    path: '/auth',
+    route: authRoutes,
   },
   {
     path: '/users',
