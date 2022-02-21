@@ -41,25 +41,4 @@ export default {
       }
     }
   },
-  // TODO: Delete this test
-  getAll: async (req: Request, res: Response) => {
-    try {
-      // const filter: IFilterObject = {
-      //   q: <string>req?.query?.q,
-      // };
-
-      // const resource = await appService.findAll(filter);
-
-      res.status(200).json({
-        status: 'success',
-        message: 'Resources successfully working',
-        // data: { resource },
-      });
-    } catch (error) {
-      DEBUG(error);
-      if (error instanceof ApplicationError) {
-        throw new ApplicationError(error.statusCode, error.message);
-      }
-    }
-  },
 };
