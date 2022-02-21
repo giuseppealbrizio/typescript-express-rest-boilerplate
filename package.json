@@ -24,6 +24,27 @@
     "name": "Giuseppe Albrizio",
     "email": "g.albrizio@gmail.com"
   },
+  "keywords": [
+    "express",
+    "node",
+    "node.js",
+    "mongodb",
+    "mongoose",
+    "ecma",
+    "REST",
+    "API",
+    "boilerplate",
+    "generator",
+    "starter project",
+    "eslint",
+    "jest",
+    "sendgrid",
+    "test",
+    "tsc",
+    "typescript",
+    "jest",
+    "boilerplate"
+  ],
   "license": "MIT",
   "dependencies": {
     "@google-cloud/pubsub": "^2.19.0",
