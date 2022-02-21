@@ -1,3 +1,4 @@
+import { Request, Response } from 'express';
 import { PubSub } from '@google-cloud/pubsub';
 import debug from 'debug';
 import { ApplicationError } from '../../errors';
@@ -30,6 +31,32 @@ export const publishMessageToPubSub = async (
       .publishMessage(message);
 
     return { messageId };
+  } catch (error: any) {
+    DEBUG(error);
+    if (error instanceof ApplicationError) {
+      throw new ApplicationError(500, error.message);
+    }
+  }
+};
+
+/**
+ * This controller is used in the router to publish a message to a specific topic
+ * through the PubSub API declared up here
+ * @return {Promise<any>}
+ * @param req
+ * @param res
+ */
+export const publishEventExample = async (req: Request, res: Response) => {
+  try {
+    const payload = { body: 'This is an example of a payload' };
+    const topic = 'topic_name';
+    const messageId = await publishMessageToPubSub(payload, topic);
+
+    res.status(200).json({
+      status: 'success',
+      message: messageId ? 'Event pushed to pub/sub' : 'Event not pushed',
+      data: { messageId: messageId || 'Not found' },
+    });
   } catch (error) {
     DEBUG(error);
     if (error instanceof ApplicationError) {

@@ -4,9 +4,9 @@ import _ from 'lodash';
 import appRoutes from './app.route';
 import authRoutes from './auth.route';
 import userRoutes from './user.route';
-// import publisherRoutes from './events/publisher.route';
-// import subscriberRoutes from './events/subscriber.route';
-// import swaggerRoutes from './swagger.route';
+import swaggerRoutes from './swagger.route';
+import publisherRoutes from './events/publisher.route';
+import subscriberRoutes from './events/subscriber.route';
 
 const router = express.Router();
 
@@ -33,20 +33,20 @@ const defaultRoutes = [
     path: '/users',
     route: userRoutes,
   },
-  // {
-  //   path: '/publisher',
-  //   route: publisherRoutes,
-  // },
-  // {
-  //   path: '/subscriber',
-  //   route: subscriberRoutes,
-  // },
+  {
+    path: '/publisher',
+    route: publisherRoutes,
+  },
+  {
+    path: '/subscriber',
+    route: subscriberRoutes,
+  },
 ];
 
 const devRoutes = [
   {
     path: '/documentation',
-    route: appRoutes,
+    route: swaggerRoutes,
   },
 ];
 

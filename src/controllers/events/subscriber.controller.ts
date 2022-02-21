@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { PubSub } from '@google-cloud/pubsub';
 import debug from 'debug';
-import { ApplicationError } from '../../errors/Application.error';
+import { ApplicationError } from '../../errors';
 
 const DEBUG = debug('dev');
 
@@ -52,7 +52,7 @@ export const subscribeToPushEventExample = async (
  * @param res
  * @return {Promise<void>}
  */
-export const subscribeToPullEventExample = (): void => {
+export const subscribeToPullEventExample = async (): Promise<void> => {
   try {
     // Define some options for subscription
     const subscriberOptions = {
@@ -92,7 +92,6 @@ export const subscribeToPullEventExample = (): void => {
     };
 
     // Create an event handler to handle errors
-    // eslint-disable-next-line func-names
     const errorHandler = function (error: Error) {
       if (error instanceof ApplicationError) {
         throw new ApplicationError(301, error.message);
@@ -111,11 +110,27 @@ export const subscribeToPullEventExample = (): void => {
       subscription.removeListener('error', errorHandler);
       console.log(`${messageCount} message(s) received.`);
     }, 60 * 1000);
-    // TODO: Check if this function has to return anything
   } catch (error) {
     DEBUG(error);
     if (error instanceof ApplicationError) {
       throw new ApplicationError(500, error.message);
+    }
+  }
+};
+
+export const receivePullMessage = async (req: Request, res: Response) => {
+  try {
+    // wait for message to be pulled from pub/sub
+    await subscribeToPullEventExample();
+    // func does not return anything, we can only catch errors
+    res.status(200).json({
+      status: 'success',
+      message: 'Pull event received',
+    });
+  } catch (error) {
+    DEBUG(error);
+    if (error instanceof ApplicationError) {
+      throw new ApplicationError(error.statusCode, error.message);
     }
   }
 };
