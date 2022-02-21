@@ -113,7 +113,7 @@ export const streamBufferToGCS = async (buffer: Buffer) => {
 export const streamFileToGCS = async (
   file: Express.Multer.File,
   directory: string,
-) => {
+): Promise<{ publicUrl: string; blobName: string }> => {
   // destructuring data file object
   const { originalname } = file;
 

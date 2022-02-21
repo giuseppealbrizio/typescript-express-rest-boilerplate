@@ -30,7 +30,9 @@
     "quotes": ["error", "single"],
     "import/prefer-default-export": "off",
     "array-callback-return": "off",
+    "func-names": "off",
     "no-restricted-globals": "off",
+    "no-underscore-dangle": "off",
     "@typescript-eslint/ban-ts-comment": "warn",
     // ** Typescript rules section
     "@typescript-eslint/prefer-default-export": "off",

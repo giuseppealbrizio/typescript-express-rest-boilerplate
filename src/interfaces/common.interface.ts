@@ -6,6 +6,10 @@ export interface ErrnoException extends Error {
   stack?: string;
 }
 
-export interface IFilterObject extends Object {
-  q: string;
+export interface ISortingOptions {
+  sort?: string;
+  sortColumn?: string;
+  sortBy?: string;
+  page?: string;
+  perPage?: string;
 }

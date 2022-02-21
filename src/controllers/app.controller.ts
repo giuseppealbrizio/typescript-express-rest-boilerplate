@@ -1,75 +1,59 @@
 import { Request, Response } from 'express';
 import debug from 'debug';
 import { ApplicationError } from '../errors';
-import appService from '../services/app.service';
-import { IFilterObject } from '../interfaces/common.interface';
 
 const DEBUG = debug('dev');
 
 export default {
+  /**
+   * Test controller - Protected router test
+   * @param req
+   * @param res
+   * @return {Promise<void>}
+   */
+  checkRouteProtection: async (req: Request, res: Response) => {
+    res.status(200).json({
+      status: 'success',
+      data: {
+        message: 'Yes you are authenticated and the test is completed',
+      },
+    });
+  },
+  /**
+   * Test controller - This is a test controller to retrieve the user logged
+   * @param req
+   * @param res
+   * @return {Promise<void>}
+   */
+  checkUserLogged: async (req: Request, res: Response) => {
+    try {
+      res.status(200).json({
+        status: 'success',
+        message: 'User logged retrieved',
+        userInPassport: req?.user,
+        userInSession: req?.session,
+        userInCustomMiddleware: req?.currentUser,
+      });
+    } catch (error) {
+      DEBUG(error);
+      if (error instanceof ApplicationError) {
+        throw new ApplicationError(error.statusCode, error.message);
+      }
+    }
+  },
+  // TODO: Delete this test
   getAll: async (req: Request, res: Response) => {
     try {
-      const filter: IFilterObject = {
-        q: <string>req?.query?.q,
-      };
+      // const filter: IFilterObject = {
+      //   q: <string>req?.query?.q,
+      // };
 
-      const resource = await appService.findAll(filter);
+      // const resource = await appService.findAll(filter);
 
       res.status(200).json({
         status: 'success',
         message: 'Resources successfully working',
-        data: { resource },
-      });
-    } catch (error) {
-      DEBUG(error);
-      if (error instanceof ApplicationError) {
-        throw new ApplicationError(error.statusCode, error.message);
-      }
-    }
-  },
-  getOne: async (req: Request, res: Response) => {
-    try {
-      const resource = await appService.findOne(req.params.id);
-
-      res.status(200).json({
-        status: 'success',
-        message: 'Resource successfully working',
-        data: { resource },
-      });
-    } catch (error) {
-      DEBUG(error);
-      if (error instanceof ApplicationError) {
-        throw new ApplicationError(error.statusCode, error.message);
-      }
-    }
-  },
-  update: async (req: Request, res: Response) => {
-    try {
-      const resource = await appService.findOneAndUpdate(
-        req.params.id,
-        req.body,
-      );
-
-      res.status(200).json({
-        status: 'success',
-        message: 'Resource successfully updated',
-        data: { resource },
-      });
-    } catch (error) {
-      DEBUG(error);
-      if (error instanceof ApplicationError) {
-        throw new ApplicationError(error.statusCode, error.message);
-      }
-    }
-  },
-  deleteOne: async (req: Request, res: Response) => {
-    try {
-      const resource = await appService.findOneAndDelete(req.params.id);
-
-      res.status(200).json({
-        status: 'success',
-        message: 'Resource successfully deleted',
-        data: { resource },
+        // data: { resource },
       });
     } catch (error) {
       DEBUG(error);
