@@ -7,6 +7,7 @@ FROM base as builder
 COPY ["package.json", "package-lock.json*", "./"]
 RUN npm ci --only-production
 COPY ./src ./src
+COPY ./tsconfig.json ./tsconfig.json
 RUN npm run build
 RUN npm prune --production
 
