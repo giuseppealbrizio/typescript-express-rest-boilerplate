@@ -133,6 +133,7 @@ export default {
   logout: async (req: Request, res: Response, next: NextFunction) => {
     try {
       res.clearCookie('jwt');
+      res.clearCookie('connect.sid');
       req.session.destroy(function (error) {
         if (error) {
           return next(error);
