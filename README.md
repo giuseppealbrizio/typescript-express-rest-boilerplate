@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/giuseppealbrizio/typescript-express-rest-boilerplate.svg?branch=main)](https://app.travis-ci.com/giuseppealbrizio/typescript-express-rest-boilerplate)
+
 # Typescript Rest Boilerplate
 
 #### Typescript REST microservice boilerplate using node.js and express and some other cool stuff
