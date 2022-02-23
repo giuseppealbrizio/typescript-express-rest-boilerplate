@@ -81,13 +81,13 @@ app.use(
     resave: false,
     saveUninitialized: false,
     /* Store session in mongodb */
-    store: MongoStore.create({
-      autoRemove: 'native', // Default
-      mongoUrl:
-        process.env.NODE_ENV === 'production'
-          ? process.env.MONGO_URI
-          : process.env.MONGO_URI_TEST,
-    }),
+    // store: MongoStore.create({
+    //   autoRemove: 'native', // Default
+    //   mongoUrl:
+    //     process.env.NODE_ENV === 'production'
+    //       ? process.env.MONGO_URI
+    //       : process.env.MONGO_URI_TEST,
+    // }),
     unset: 'destroy',
   }),
 );
