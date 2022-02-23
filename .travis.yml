@@ -3,26 +3,4 @@ node_js:
   - 14
   - 16
 env:
-  - JWT_KEY='YOUR_JWT_KEY' GOOGLE_APPLICATION_CREDENTIALS='./src/config/gcloud/google-application-credentials.json' GOOGLE_PROJECT_ID='your_google_project_id' GOOGLE_STORAGE_BUCKET_NAME='your_google_storage_bucket_name' GOOGLE_CLIENT_ID='your_google_client_id' GOOGLE_CLIENT_SECRET='your_google_client_secret'
-  - JWT_KEY='YOUR_JWT_KEY' GOOGLE_APPLICATION_CREDENTIALS='./src/config/gcloud/google-application-credentials.json' GOOGLE_PROJECT_ID='your_google_project_id' GOOGLE_STORAGE_BUCKET_NAME='your_google_storage_bucket_name' GOOGLE_CLIENT_ID='your_google_client_id' GOOGLE_CLIENT_SECRET='your_google_client_secret'
-#  - SERVICE_NAME='your_service_name'
-#  #GOOGLE CLOUD CONFIGURATION
-#  - GOOGLE_APPLICATION_CREDENTIALS='./src/config/gcloud/google-application-credentials.json'
-#  - GOOGLE_PROJECT_ID='your_google_project_id'
-#  - GOOGLE_STORAGE_BUCKET_NAME='your_google_storage_bucket_name'
-#  - GOOGLE_CLIENT_ID='your_google_client_id'
-#  - GOOGLE_CLIENT_SECRET='your_google_client_secret'
-#  #CLIENT CONFIGURATION
-#  - CLIENT_URL='your_client_url_to_authorize'
-#  #SENDGRID CONFIGURATION
-#  - SENDGRID_API_KEY='your_sendgrid_api_key'
-#  - SENDGRID_SENDER_EMAIL='your_sendgrid_email_sender'
-#  #MONGO DB CONFIGURATION
-#  - MONGO_URI='your_mongo_db_connection'
-#  - MONGO_URI_TEST='your_mongo_db_connection_test'
-#  - MONGO_USER='your_mongo_user'
-#  - MONGO_PASS='your_mongo_password'
-#  #TWILIO CONFIGURATION
-#  - TWILIO_ACCOUNT_SID='your_twilio_account_sid'
-#  - TWILIO_AUTH_TOKEN='your_twilio_account_token'
-#  - TWILIO_PHONE_NUMBER='+your_phone_number'
+  - NODE_ENV=test
