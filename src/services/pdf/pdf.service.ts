@@ -7,7 +7,7 @@ import stream from 'stream';
 import { format } from 'util';
 
 const storage = new Storage();
-const bucket = storage.bucket(process.env.GOOGLE_STORAGE_BUCKET_NAME);
+const bucket = storage.bucket(<string>process.env.GOOGLE_STORAGE_BUCKET_NAME);
 
 /**
  * This function create a pdf and store in GCS storage
@@ -20,7 +20,10 @@ const bucket = storage.bucket(process.env.GOOGLE_STORAGE_BUCKET_NAME);
  * @param directory
  * @returns {Promise<unknown>}
  */
-export const generatePdfFromBuffer = async (object, directory) => {
+export const generatePdfFromBuffer = async (
+  object: object,
+  directory: string,
+) => {
   // destructuring file object
 
   const COMPANY_LOGO = 'https://storage.url/logo-default-site.png';
