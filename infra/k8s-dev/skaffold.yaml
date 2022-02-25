@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta24
+apiVersion: skaffold/v2beta27
 kind: Config
 metadata:
   name: project-id
@@ -9,7 +9,7 @@ build:
       context: service-folder #folder where codebase is stored
       sync:
         manual:
-          - src: src/**/*.js
+          - src: src/**/*.ts
             dest: .
       docker:
         dockerfile: Dockerfile
@@ -17,7 +17,7 @@ build:
       context: service2-folder
       sync:
         manual:
-          - src: src/**/*.js
+          - src: src/**/*.ts
             dest: .
       docker:
         dockerfile: Dockerfile
