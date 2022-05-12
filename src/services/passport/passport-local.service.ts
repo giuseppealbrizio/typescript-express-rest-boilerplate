@@ -2,7 +2,7 @@ import debug from 'debug';
 import dotenv from 'dotenv';
 import passport from 'passport';
 import passportLocal, { IStrategyOptionsWithRequest } from 'passport-local';
-import { NativeError } from 'mongoose';
+import NativeError from 'mongoose';
 import User, { IUserDocument } from '../../models/user.model';
 
 const DEBUG = debug('dev');
