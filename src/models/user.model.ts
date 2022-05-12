@@ -22,10 +22,15 @@ const jwtKey = process.env.JWT_KEY;
 
 // define interface for methods
 export interface IUserDocument extends IUser, SoftDeleteDocument {
+  // @ts-ignore
   toJSON(): LeanDocument<this>;
+
   comparePassword(password: string): Promise<boolean>;
+
   generateVerificationToken(): string;
+
   generatePasswordResetToken(): void;
+
   // comparePassword: (password: string) => Promise<boolean>;
   // generateVerificationToken: () => string;
 }
