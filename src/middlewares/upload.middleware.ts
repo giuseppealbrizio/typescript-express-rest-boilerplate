@@ -35,7 +35,7 @@ export const uploadMultipleFilesToMS = memoryStorageUpload.array('files');
 const gcsUploadStandard = multer({
   storage: new MulterGoogleCloudStorage({
     acl: 'publicRead',
-    autoRetry: true,
+    // autoRetry: true,
     bucket: process.env.GOOGLE_STORAGE_BUCKET_NAME, // bucket name
     destination: 'the-name-of-service-folder/', // folder destination in gcs
     projectId: process.env.GOOGLE_PROJECT_ID, // gcp project id
@@ -65,7 +65,7 @@ export const uploadMultipleFilesToGCS = gcsUploadStandard.array('files');
 const gcsUploadImgToDirectory = multer({
   storage: new MulterGoogleCloudStorage({
     acl: 'publicRead',
-    autoRetry: true,
+    // autoRetry: true,
     bucket: process.env.GOOGLE_STORAGE_BUCKET_NAME, // bucket name
     destination: (
       req: Request,
