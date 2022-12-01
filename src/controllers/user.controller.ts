@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import debug from 'debug';
 import _ from 'lodash';
-import UserService from '../services/user.service';
 import { ApplicationError } from '../errors';
+import UserService from '../services/user.service';
 import { CurrentUserPayload } from '../interfaces/models/user.interface';
 
 const DEBUG = debug('dev');
@@ -21,6 +21,11 @@ const {
 } = UserService;
 
 export default {
+  /**
+   * Create a new user
+   * @param req
+   * @param res
+   */
   createUser: async (req: Request, res: Response) => {
     try {
       const user = await createUser(req.body, <Express.Multer.File>req.file);

@@ -30,7 +30,7 @@ const DEBUG = debug('dev');
 export default {
   MongoDB: async () => {
     try {
-      mongoose.connect(<string>process.env.MONGO_URI);
+      await mongoose.connect(<string>process.env.MONGO_URI);
       logger.info(`Connected to db: ${mongoose.connection.name}`);
     } catch (error) {
       DEBUG(error);
